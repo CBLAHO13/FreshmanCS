@@ -1,0 +1,210 @@
+<!-- Tux the Virtual Pest. 
+PART 2 CHANGE LOG
+This is a preliminary of the the User Interface. Subject to change.
+In fact, it's already changed. I've decided that the bare minimum looks stupid. 
+Also, I have some funny ideas. The Radio form will "dead end" Tux one way or another. 
+The Terminal states will include: 
+** Pissing him off so much that he commits suicide via sudo rm -rf / (by !vi /etc/inittab && id:6:initdefault: which creates infinite rebooting. Gah. redirects to dead)
+** Accidentally breaking him through badly formed bash commands (the dreaded dd /dev/null combo! redirects to dead)
+** Fork bombing him (redirects to dead)
+** sudo shutdown -h now (redirects to turned off and gives an option to restart him)
+** Sending a malformed Magic System Request (redirects to turned off and gives an option to restart him)
+If I think of more, I'll add more. 
+
+Another Change: The text "Install program from Source" will be changed to "sudo apt-get upgrade". Updates are far more important than source installations. 
+
+PART 3 CHANGE LOG
+Minor changes to aesthetics
+Added Scripts and functions
+Added redirect pages
+
+Fun bits: 
+	*Extra pages triggered by the radio buttons
+
+Colleen Blaho 65H 
+Virtual Pest Part 2 -->
+
+<html>
+
+<head> 
+	<title> Tux the Penguin</title>
+	<script LANGUAGE="JavaScript">
+		<!-- If you're still using IE 5, be ashamed.
+	var tux;
+	var reason; //helper for the selection boxes
+	var currentImage = new Image; //dangly bit to change the picture with
+	var happyPicture = new Image;
+	var enragedPicture = new Image;
+	var calmPicture = new Image;
+	var thinkingPicture = new Image;
+	var codingPicture = new Image;
+	
+	//constructor
+	function VirtualPest(state, petaction, petsays, counter, imageSource)
+	{ 
+	this.state = state;
+	this.petaction = petaction;
+	this.petsays = petsays;
+	this.counter = counter;
+	currentImage = imageSource
+	}
+
+	//Initialize!!!
+	
+	function Initializer()
+	{
+	
+	happyPicture.src ="IMAGES/happy.jpg";
+	enragedPicture.src = "IMAGES/enraged.gif";
+	calmPicture.src = "IMAGES/calm.png";
+	thinkingPicture.src = "IMAGES/baby-tux-thinking.jpg";
+	codingPicture.src = "IMAGES/coding.jpg";
+	
+	tux = new VirtualPest("thinking", "scratching his head", "Hmm...", 0, thinkingPicture);
+	ShowState(tux);
+	
+	setTimeout("Simulate(tux)",1000); //keeping value from example because it's a good interval
+
+	}
+	
+	function ShowState(pest)
+	//get the state, form elements updated, picture changed, etc.
+	{
+	var state = pest.state
+	
+	if (state == "happy")
+	{
+		pest.petaction = "smiling";
+		pest.petsays = "echo `:)`";
+		currentImage = happyPicture;
+	}
+	else if (state == "enraged")
+	{
+		pest.petaction = ":(){ :|:& };:"; //this is a fork bomb, if you run it, you deserve to get your box run into the ground. Honestly.
+		pest.petsays = "echo `sudo rm -rf /`"; //don't run this either. This is WORSE than the fork bomb.
+		currentImage = enragedPicture;
+	}
+	else if (state == "calm")
+	{
+		pest.petaction = "sitting quietly";
+		pest.petsays = "..." //he's the silent brooding type...
+		currentImage = calmPicture;
+	}
+	else if (state == "thinking")
+	{
+		pest.petaction = "scratching his head"
+		pest.petsays = "echo `01000110 01000011 01001011 00100000 01010101`"
+		currentImage = thinkingPicture;
+	}
+	else if (state == "coding")
+	{
+		pest.petaction = "s = Do not Disturb!";
+		pest.petsays = "echo `Hello World!`";
+		currentImage = codingPicture;
+	
+	}
+	else
+	{
+		pest.petaction = "0XDEADBEEF";
+		pest.petsays = "0XDEADBEEF";
+		throw 'WHAT HAVE YOU DOOOOOOOONE'; //kill the script because DAMN you really messed up
+	}
+	
+	document.getElementById("state").value = pest.state;
+	document.getElementById("action").value = pest.petaction;
+	document.getElementById("speech").value = pest.petsays;
+	document.getElementById("counter").value = pest.counter; 
+	document.getElementById("image").src = currentImage.src;
+	
+	}
+	
+	function enrage(pest)
+	{ 
+	var state = pest.state;
+	if (state == "coding" || state == "calm")
+		pest.state = "enraged";
+	ShowState(pest);
+	}
+	
+	function placate(pest)
+	{
+	var state = pest.state;
+	if (state == "thinking")
+		pest.state = "coding";
+	else if (state == "enraged")
+		pest.state = "happy"
+	ShowState(pest);
+	}
+	
+	
+	function ExTerMinAte(reason)
+	{
+		if (reason == 1 || reason == 2 || reason == 3)
+			window.location.href = "isThisADeadMan.html";
+		else if(reason == 4 || reason == 5)
+			window.location.href = "turnedOff.html";
+		else
+			window.location.href = "http://nooooooooooooooo.com/";
+		}
+	function Simulate(pest)
+	{
+		pest.counter++ //weird syntax... but okay
+		
+		var state = pest.state;
+		
+		var x = Math.random()
+		
+		if (state == "enraged" && x > 0.99)
+			Exterminate(a); //drama queen.
+		else if (state == "happy" && x > 0.7)
+			pest.state = "coding";
+		else if (state == "thinking" && x > .75)
+			pest.state = "happy";
+		else if (state == "thinking" && x < .5)
+			pest.state = "calm";
+		else if (state == "calm" && x < .1)
+			pest.state = "coding";
+		else if (state == "calm" && x > .5)
+			pest.state = "thinking";
+		
+
+		
+		ShowState(pest)
+		setTimeout("Simulate(tux)", 1000) //this is the function that never never ends...
+	}
+	 
+	//-->		
+	</script>
+	</head>
+	
+<body onLoad = "Initializer()">
+
+<center><h1> Tux the High Maintenance Penguin!</h1>
+</br>
+</br>
+<img id ="image" src="IMAGES/calm.png" height = "300" width = "250"/> <!-- This needs to be replaced with a JS variable to hold the current image pointer. For now it is static. -->
+</br>
+</br>
+Tux is : <input type="text" name="state" id="state" size="20"/> 
+</br>
+Tux is Doing: <input type="text" name="action" id="action" size="20"/>
+</br>
+Tux Says: <input type="text" name="speech" id="speech" size="20"/> <!--Empty text box by default. Will be filled by JS. -->
+</br>
+ Step counter: <input type=text name=counter id=counter VALUE="" size=30 />
+</br>
+</br>
+<input type = "button" name="negative" id = "negative" onClick ="enrage(tux)" value="Use Windows"> &#09;&#09;&#09;&#09;&#09;&#09; <input type = "button" name="positive" id = "positive" onClick="placate(tux)" value="sudo apt-get upgrade"> <!--unashamed tab alignment-->
+<!-- Both of these buttons will have onClick attributes that will call functions. -->
+</br>
+</br>
+<h2>Be careful...</h2>
+<input type ="radio" name="terminal" id="terminal" onClick="reason =1"/> !vi /etc/inittab && id:6:initdefault: </br>
+<input type ="radio" name="terminal" id="terminal" onClick="reason = 2"/> dd if=/dev/urandom of=/dev/sd1 bs=4096 </br>
+<input type ="radio" name="terminal" id="terminal" onClick="reason = 3"/> :(){ :|:& };: </br>
+<input type ="radio" name="terminal" id="terminal" onClick="reason = 4"/> sudo shutdown - h now </br>
+<input type ="radio" name="terminal" id="terminal" onClick="reason = 5"/> Ctrl + Alt + sysReq + REISUB </br>
+<input type ="button" name ="terminalSubmit" id="terminalSubmit" onClick ="ExTerMinAte(reason)" value="Do It!"/> 
+<!-- This button will pass the value of the radio button to a function, who takes it from there.-->
+</body>
+</html>

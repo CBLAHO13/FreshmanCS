@@ -1,0 +1,5 @@
+This pest will oscillate between happy, calm and thinking until it enters the “coding” state. The only
+way to change this state is to use the radio form or click the “Use Windows” button. Doing this will put
+it into the “enraged” state. From there, the pest will either self terminate (1/100 chance) or become
+happy again when the “sudo apt-get upgrade” button is clicked.
+
